@@ -205,3 +205,175 @@ nav.scrolled {
 .nav-links a:hover {
     color: var(--accent);
 }
+
+/* СЕКЦИИ */
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.8) 100%);
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+section.active::before {
+    opacity: 1;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+}
+
+/* О СЕБЕ */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: fadeInLeft 0.8s ease-out 0.2s forwards;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: fadeInRight 0.8s ease-out 0.4s forwards;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* НАВЫКИ */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.skill-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+.skill-name {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.skill-level {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 1s ease-out;
+    width: 0;
+}
+
+.skill-card.visible .skill-progress {
+    animation: fillProgress 1.5s ease-out forwards;
+}
