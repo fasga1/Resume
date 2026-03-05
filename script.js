@@ -90,4 +90,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Обработка формы
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Здесь будет логика отправки сообщений на почту
+            
+            console.log('Форма отправлена:', { name, email, message });
+            
+            alert('Спасибо за ваше сообщение!');
+            contactForm.reset();
+        });
+    }
+
+    // Эффект параллакса для хедера
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        const scrollPosition = window.scrollY;
+        header.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+    });
+
+    // Анимация при загрузке страницы
+    setTimeout(() => {
+        document.querySelector('.header-content').style.opacity = '1';
+        document.querySelector('.header-content').style.transform = 'translateY(0)';
+    }, 100);
+
+    
 });
